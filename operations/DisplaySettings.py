@@ -1,4 +1,4 @@
-from IPython.core.display_functions import clear_output
+from utils.helpers import clear_output
 from operations.StaticOperations import print_header, get_float_input
 
 

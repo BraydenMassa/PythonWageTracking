@@ -1,13 +1,8 @@
-from datetime import datetime
-
-def default_date():
-    return datetime.now().strftime("%m/%d/%y")
-
 class Shift:
     def __init__(self, hours, card_tips,
                  cash_tips,
                  shift_type, base_pay,
-                 date = default_date(),
+                 date,
                  _id = None):
         self.card_tips = float(card_tips)
         self.cash_tips = float(cash_tips)
@@ -29,7 +24,7 @@ class Shift:
         return self.total_tips() / self.hours + self.base_pay
 
     def __str__(self):
-        return f"Shift on {self.date} - Hours: {self.hours}, " \
-               f"Card tips: ${self.card_tips:.2f}, Cash tips: ${self.cash_tips:.2f}, " \
-               f"ShiftType: {self.shift_type}"
+        shift_type_str = "Bartending" if self.shift_type == "Bartender" else "Serving"
+        return f"{shift_type_str} shift on {self.date} - Hours: {self.hours}, " \
+               f"Card tips: ${self.card_tips:.2f}, Cash tips: ${self.cash_tips:.2f}"
 

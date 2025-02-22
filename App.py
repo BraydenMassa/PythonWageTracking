@@ -1,15 +1,10 @@
-#from IPython.display import clear_output
-import os
 from ShiftRepository import ShiftRepository
 from operations.AddShift import add_shift
 from operations.DeleteShift import delete_shift
 from operations.DisplaySettings import display_settings
 from operations.DisplayShifts import display_shifts
 from operations.DisplayStatistics import display_statistics
-
-def clear_output():
-    os.system("cls" if os.name == "nt" else "clear")
-
+from utils.helpers import clear_output
 
 class App:
     VALID_INPUTS = ['1', '2', '3', '4', '5', '6']
@@ -19,7 +14,8 @@ class App:
 
     # Main loop
     def main_loop(self):
-        print("Welcome to the Wage Tracking App!\n")
+        clear_output()
+        print("Wage Tracker\n")
         while True:
             user_input = input(display_main_menu())
             if user_input not in self.VALID_INPUTS:
@@ -43,7 +39,7 @@ class App:
 
 # Displays main menu of application
 def display_main_menu():
-    return '*' * 19 + '\n' + "[1] View Shifts\n[2] Add New Shift\n[3] Delete a Shift\n[4] View Statistics\n[5] Settings\n[6] Quit\n" + '*' * 19 + '\nEnter input: '
+    return '*' * 19 + '\n' + "[1] View Shifts\n[2] Add New Shift\n[3] Delete a Shift\n[4] View Statistics\n[5] Settings\n[6] Quit\n" + '*' * 19 + '\n\nEnter input: '
 
 # Executed when program ends
 def display_goodbye():

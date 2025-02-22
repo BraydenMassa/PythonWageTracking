@@ -17,6 +17,9 @@ class Shift:
         self._id = _id
         self.date = date
 
+    def get_id(self):
+        return self._id
+
     # Total amount of tips on a shift
     def total_tips(self):
         return self.cash_tips + self.card_tips

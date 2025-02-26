@@ -12,6 +12,10 @@ def delete_shift(shift_repo):
         return
 
     to_delete = get_shift_to_delete(shifts)
+    # User cancelled, so return from function
+    if to_delete == -1:
+        return
+    
     clear_output()
     if shift_repo.delete_shift(shifts[to_delete].get_id()):
         print("Shift deleted successfully")
@@ -28,7 +32,7 @@ def get_shift_to_delete(shifts):
         if to_delete == 'x' or to_delete == 'X':
             clear_output()
             print("Operation cancelled successfully.")
-            return
+            return -1
         valid_inputs = [i for i in range(1, len(shifts) + 1)]
 
         if not is_valid_int(to_delete):
